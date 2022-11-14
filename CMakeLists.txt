@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.23)
+project(tuat_before_admission)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(1-1 1-1.cpp)
