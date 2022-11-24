@@ -1,6 +1,7 @@
 #include <iostream>
 #include <bitset>
 #include <bit>
+#include <cmath>
 
 using namespace std;
 
@@ -16,15 +17,17 @@ void print_b(T arg) {
 }
 
 int main() {
-    cout << "‘f”‚©‚Ç‚¤‚©”»’è‚·‚é”‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B: " << endl;
+    cout << "‘f”‚©‚Ç‚¤‚©”»’è‚·‚éŽ©‘R”‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B: " << endl;
     string input;
-    cout << sizeof(long long) << '\t' << sizeof(int) << '\t' << sizeof(short) << endl;
-    //cin >> input;
-    for (uint8_t i = 0; i < 100; ++i) {
-        cout << +i;
-        if (i % 3 == 0)cout << " *";
-        cout << '\t';
-        print_b(i);
+    cin >> input;
+    cout << input << "‚Í";
+    auto decision_num = stoull(input);
+    for (auto i = 2ULL; i <= sqrt(decision_num); ++i) {
+        if (decision_num % i == 0) {
+            cout << "‘f”‚Å‚Í‚ ‚è‚Ü‚¹‚ñB" << endl;
+            exit(0);
+        }
     }
+    cout << "‘f”‚Å‚·B" << endl;
     return 0;
 }
