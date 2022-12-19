@@ -21,7 +21,7 @@ int main() {
     string input;
     cin >> input;
     cout << input << "‚Í";
-    auto decision_num = stoull(input);
+    auto decision_num = atoll(input.c_str());
     for (auto i = 2ULL; i <= sqrt(decision_num); ++i) {
         if (decision_num % i == 0) {
             cout << "‘f”‚Å‚Í‚ ‚è‚Ü‚¹‚ñB" << endl;
