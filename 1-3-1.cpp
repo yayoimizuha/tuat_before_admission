@@ -33,7 +33,6 @@ signed main(int argc, char *argv[]) {
             item = static_cast<char>(toupper(item));
             if (string("ATGC*").find(item) == string::npos) {
                 cout << "search text error" << endl;
-                //break;
                 goto LOOP_START;
             }
         }
@@ -43,7 +42,7 @@ signed main(int argc, char *argv[]) {
 #pragma clang diagnostic pop
 }
 
-vector<string> automaton(string text, string key, string i, unsigned short incremental) {
+vector<string> automaton(string text, string key, const string& i, unsigned short incremental) {
     vector<string> ret, res;
     if (key.empty() && text.empty())return {i};
     if (key.empty()) return {i};
@@ -74,8 +73,6 @@ void search(const string &text, const string &key) {
         auto a = automaton(text.substr(i), key, "", 0);
         for (const auto &t: a) {
             if (!t.empty()) {
-                //string before = text.substr(max(0, i - 5), max(0, i - 4));
-
                 cout << i << '~' << i + t.size() - 1 << '\t';
                 for (int j = max(0, i - 5); j < i; ++j) {
                     cout << text.at(j);

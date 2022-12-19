@@ -28,6 +28,5 @@ constexpr int counter() {
 
 int main() {
     const int ans = counter();
-    cout << ans << endl;
-
+    printf("%d\n", ans);
 }
