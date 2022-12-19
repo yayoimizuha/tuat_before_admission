@@ -43,7 +43,7 @@ signed main(int argc, char *argv[]) {
 #pragma clang diagnostic pop
 }
 
-vector<string> automaton(string text, string key, string i, u_short incremental) {
+vector<string> automaton(string text, string key, string i, unsigned short incremental) {
     vector<string> ret, res;
     if (key.empty() && text.empty())return {i};
     if (key.empty()) return {i};
@@ -73,8 +73,19 @@ void search(const string &text, const string &key) {
     for (int i = 0; i < text.size(); ++i) {
         auto a = automaton(text.substr(i), key, "", 0);
         for (const auto &t: a) {
-            if (!t.empty())
-                cout << i << '~' << i + t.size() - 1 << '\t' << t << endl;
+            if (!t.empty()) {
+                //string before = text.substr(max(0, i - 5), max(0, i - 4));
+
+                cout << i << '~' << i + t.size() - 1 << '\t';
+                for (int j = max(0, i - 5); j < i; ++j) {
+                    cout << text.at(j);
+                }
+                cout << "\x1b[41m\x1b[1m" << t << "\x1b[0m\x1b[39m";
+                for (int j = min(i + t.size(), text.size()); j < min(i + t.size() + 5, text.size()); ++j) {
+                    cout << text.at(j);
+                }
+                cout << endl;
+            }
         }
     }
 }
